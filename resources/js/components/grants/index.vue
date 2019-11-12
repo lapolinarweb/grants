@@ -45,27 +45,53 @@
                     <div class="input-item input-with-label">
                         <label for="mobile" class="input-item-label">Mobile Number</label>
                         <input id="mobile" v-model="form.mobile" type="text" required name="mobile"
-                               placeholder="e.g: +63 915-1231234" class="input-bordered"
+                               placeholder="e.g: (454) 816 4849" class="input-bordered"
                                :class="{ 'border-danger': errors && errors.mobile}">
                         <div v-if="errors && errors.mobile" class="text-danger">{{ errors.mobile[0] }}</div>
                     </div><!-- .input-item -->
                 </div><!-- .col -->
+
+                <!-- Organisation name -->
+                <div class="col-md-6">
+                    <div class="input-item input-with-label">
+                        <label for="organisation" class="input-item-label">Organisation Name</label>
+                        <input class="input-bordered" type="text" id="organisation" name="organisation" required
+                               v-model="form.organisation" :class="{ 'border-danger': errors && errors.organisation}"/>
+                        <div v-if="errors && errors.organisation" class="text-danger">{{ errors.organisation[0] }}</div>
+                    </div><!-- .input-item -->
+                </div><!-- .col -->
+
+                <!-- Passport -->
+                <div class="col-md-6">
+                    <div class="input-item input-with-label">
+                        <label for="passport" class="input-item-label">Passport Number</label>
+                        <input class="input-bordered" type="text" id="passport" name="passport"
+                               v-model="form.passport" :class="{ 'border-danger': errors && errors.passport}"/>
+                        <div v-if="errors && errors.passport" class="text-danger">{{ errors.passport[0] }}</div>
+                    </div><!-- .input-item -->
+                </div><!-- .col -->
+
+                <!-- Address -->
                 <div class="col-md-6">
                     <div class="input-item input-with-label">
                         <label for="address" class="input-item-label">Address</label>
                         <textarea class="input-bordered" type="text" id="address" name="address" required
-                                v-model="form.address" placeholder="e.g: 123 Apartment Bldg. Craig Street"
-                                  :class="{ 'border-danger': errors && errors.address}">
+                                  v-model="form.address" placeholder="e.g: 123 Apartment Bldg. Craig Street"
+                                  rows="3"  :class="{ 'border-danger': errors && errors.address}">
                         </textarea>
                         <div v-if="errors && errors.address" class="text-danger">{{ errors.address[0] }}</div>
                     </div><!-- .input-item -->
                 </div><!-- .col -->
+
+
+                <!-- Purpose -->
                 <div class="col-md-6">
                     <div class="input-item input-with-label">
-                        <label for="passport" class="input-item-label">Passport Number</label>
-                        <input class="input-bordered" type="text" id="passport" name="passport" required
-                            v-model="form.passport" :class="{ 'border-danger': errors && errors.passport}"/>
-                        <div v-if="errors && errors.passport" class="text-danger">{{ errors.passport[0] }}</div>
+                        <label for="purpose" class="input-item-label">Purpose of Grants</label>
+                        <textarea class="input-bordered" type="text" id="purpose" name="purpose" required rows="3"
+                                  v-model="form.purpose" :class="{ 'border-danger': errors && errors.purpose}">
+                        </textarea>
+                        <div v-if="errors && errors.purpose" class="text-danger">{{ errors.purpose[0] }}</div>
                     </div><!-- .input-item -->
                 </div><!-- .col -->
             </div><!-- .row -->
