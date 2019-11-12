@@ -13,7 +13,7 @@
                     <div class="input-item input-with-label">
                         <label for="firstname" class="input-item-label">First Name</label>
                         <input id="firstname" v-model="form.firstname" type="text" required name="firstname"
-                               placeholder="e.g: Juan Angelo" class="input-bordered"
+                               placeholder="e.g: Mason James" class="input-bordered"
                                :class="{ 'border-danger': errors && errors.firstname}">
                         <div v-if="errors && errors.firstname" class="text-danger">{{ errors.firstname[0] }}</div>
                     </div><!-- .input-item -->
@@ -24,7 +24,7 @@
                     <div class="input-item input-with-label">
                         <label for="lastname" class="input-item-label">Last Name</label>
                         <input id="email" v-model="form.lastname" type="text" required name="email"
-                               placeholder="e.g: Dela Cruz" class="input-bordered">
+                               placeholder="e.g: Murray" class="input-bordered">
                         <div v-if="errors && errors.lastname" class="text-danger">{{ errors.lastname[0] }}</div>
                     </div><!-- .input-item -->
                 </div><!-- .col -->
@@ -34,7 +34,7 @@
                     <div class="input-item input-with-label">
                         <label for="email" class="input-item-label">Email Address</label>
                         <input id="lastname" v-model="form.email" type="text" required name="lastname"
-                               placeholder="e.g: juandc@gmail.com" class="input-bordered"
+                               placeholder="e.g: murraymj@domain.com" class="input-bordered"
                                :class="{ 'border-danger': errors && errors.email}">
                         <div v-if="errors && errors.email" class="text-danger">{{ errors.email[0] }}</div>
                     </div><!-- .input-item -->
