@@ -1,15 +1,5 @@
 <template>
     <form class="from-step-item" @submit.prevent="onSubmit">
-        <div class="from-step-heading">
-            <div class="from-step-head">
-                <select id="grant_type" name="grant_type" v-model="form.grant_type">
-                    <option value="individual" selected="selected">Individual</option>
-                    <option value="corporate">Corporate</option>
-                </select>
-                <label for="grant_type">Grants</label>
-                <div v-if="errors && errors.grant_type" class="text-danger">{{ errors.grant_type[0] }}</div>
-            </div>
-        </div>
         <div class="from-step-content">
             <div class="note note-md note-info note-plane">
                 <em class="fas fa-info-circle"></em>
