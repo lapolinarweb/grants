@@ -18,6 +18,8 @@ class ApplicantController extends Controller
     public function apply(Request $request) {
         // validate
         try {
+            // find type
+            $granType = Type::findOrFail($request->type);
             // create applicant with grant type
             $applicant = Applicant::create([
                 'title' => $request->title,
