@@ -30,6 +30,14 @@ class CreateApplicantStatusTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
+            $table->unsignedBigInteger('approved_by');
+            $table->foreign('approved_by')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->string('comment')->nullable();
             $table->timestamps();
         });
     }
