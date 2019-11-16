@@ -108,7 +108,7 @@
 <script>
     import { BFormValidFeedback, BFormInvalidFeedback } from 'bootstrap-vue';
     import wallet from 'ethereumjs-wallet';
-    import VueSelect from 'vue-select';
+        BFormInvalidFeedback, BFormTextarea
     import VueSweetalert2 from 'vue-sweetalert2';
     import Clipboard from 'clipboard';
 
@@ -118,7 +118,7 @@
         components: {
             BFormValidFeedback,
             BFormInvalidFeedback,
-            VueSelect
+            BFormTextarea,
         },
         data() {
 		    return {
