@@ -26,12 +26,13 @@
     },
     "dependencies": {
         "bootstrap-vue": "^2.0.4",
+        "bootstrap-vue": "^2.1.0",
         "browserslist": "^4.7.0",
-        "chart.js": "^2.8.0",
+        "chart.js": "^2.9.3",
         "clipboard": "^2.0.4",
         "dotenv": "^8.1.0",
         "ethereumjs-tx": "^2.1.1",
-        "ethereumjs-util": "^6.1.0",
+        "ethereumjs-util": "^6.2.0",
         "ethereumjs-wallet": "^0.6.3",
         "etherscan-api": "^10.0.2",
         "flag-icon-css": "^3.3.0",
@@ -42,7 +43,7 @@
         "numeral": "^2.0.6",
         "owl.carousel": "^2.3.4",
         "particles": "^0.3.1",
-        "qrcode.vue": "^1.6.2",
+        "qrcode.vue": "^1.7.0",
         "toastr": "^2.1.4",
         "v-calendar": "^0.9.7",
         "vue-clipboard2": "^0.3.1",
@@ -54,7 +55,7 @@
         "vue-qrcode-reader": "^2.0.4",
         "vue-select": "^3.2.0",
         "vue-sweetalert2": "^2.1.5",
-        "vue2-perfect-scrollbar": "^1.2.1",
+        "vue2-perfect-scrollbar": "^1.2.4",
         "vuelidate": "^0.7.4",
         "web3": "^1.2.1"
     }
