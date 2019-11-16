@@ -10,22 +10,27 @@ use App\Models\Mobile;
 use App\Models\Passport;
 use App\Models\PublicKey;
 use App\Models\Status;
+use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ApplicantController extends Controller
 {
     public function apply(Request $request) {
         // validate
+
+        DB::beginTransaction();
         try {
             // find type
             $granType = Type::findOrFail($request->type);
+
             // create applicant with grant type
             $applicant = Applicant::create([
                 'title' => $request->title,
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
-                'type_id' => $request->type
+                'type_id' => $granType->id
             ]);
 
             // create address
@@ -73,10 +78,14 @@ class ApplicantController extends Controller
             // create applicant-status
             $status = Status::findOrFail('reviewing');
             $approver = User::findOrFail(1);
-            $applicant->attachedStatus($status, $approver, 'Created by System');
+            $applicant->attachStatus($status, $approver, 'Created by System');
+
+            DB::commit();
             return response()->json(['status'=> true, 'message'=> 'Successfully sent your application'], 200);
 
         }catch (\Exception $e) {
+
+            DB::rollback();
             return response()->json(['status'=>false, 'message'=>'Something went wrong', 'system'=> $e->getMessage()],403);
         }
 
