@@ -25,9 +25,7 @@
     </div>
 
     @include('layouts.footer')
-
 </div>
-<div class="preloader"><span class="spinner spinner-round"></span></div>
 
 <!-- JavaScript -->
 <script src="{{ mix('/js/app.js') }}"></script>
