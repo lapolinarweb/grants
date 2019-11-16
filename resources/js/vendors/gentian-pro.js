@@ -97,18 +97,6 @@ NioApp = function (NioApp, $, window, document) {
 	};
     NioApp.components.docReady.push(NioApp.Util.classInit);
 
-    // PreLoader !Util @v1.0
-    NioApp.Util.preLoader = function () {
-		var $preloader 	= $('.preloader'),
-			$spinner 	= $('.spinner');
-
-		if ($preloader.exists()) {
-            $body.addClass("page-loaded");
-            $spinner.fadeOut(300);
-            $preloader.delay(600).fadeOut(300);
-        }
-	};
-	NioApp.components.winLoad.push(NioApp.Util.preLoader);
 
 	// BackTop !Util @v1.0
 	NioApp.Util.backTop = function () {
@@ -676,57 +664,6 @@ NioApp = function (NioApp, $, window, document) {
 	};
 	NioApp.components.docReady.push(NioApp.Plugins.parallax);
 
-    // Popup !Plugin @v1.0
-	NioApp.Plugins.popup = function () {
-		var $content_popup = $('.content-popup'),
-			$video_popup     = $('.video-popup'),
-			$image_popup     = $('.image-popup');
-
-		var popupInit = {};
-		popupInit.content_popup = function () {
-			if ($content_popup.exists()) {
-				$content_popup.each(function(){
-					$(this).magnificPopup({
-						type: 'inline',
-						preloader: true,
-						removalDelay: 400,
-						mainClass: 'mfp-fade content-popup'
-					});
-				});
-			}
-		};
-		popupInit.video_popup = function () {
-			if ($video_popup.exists()) {
-				$video_popup.each(function(){
-					$(this).magnificPopup({
-						type: 'iframe',
-						removalDelay: 160,
-						preloader: true,
-						fixedContentPos: false,
-						callbacks: {
-							beforeOpen: function() {
-								this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
-								this.st.mainClass = this.st.el.attr('data-effect');
-							}
-						},
-					});
-				});
-			}
-		};
-        popupInit.image_popup = function () {
-			if ($image_popup.exists()) {
-				$image_popup.each(function(){
-					$(this).magnificPopup({
-						type: 'image',
-						mainClass: 'mfp-fade image-popup'
-					});
-				});
-			}
-		};
-		popupInit.content_popup();
-		popupInit.video_popup();
-		popupInit.image_popup();
-	};
 	NioApp.components.docReady.push(NioApp.Plugins.popup);
 
     // particlesJS !Plugin @v1.0
