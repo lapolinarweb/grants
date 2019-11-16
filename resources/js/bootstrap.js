@@ -1,4 +1,4 @@
-window._ = require('lodash');
+window._ = require('underscore');
 window.Vue = require('vue');
 window.etherscan = require('etherscan-api').init('GEPXM3N11F476EMB8FCXG2XVK89Y5PKMFK');
 window.Web3 = require('web3');
@@ -14,7 +14,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
-    require('./vendors/gentian-pro');
+    // require('./vendors/gentian-pro');
 } catch (e) {}
 
 /**

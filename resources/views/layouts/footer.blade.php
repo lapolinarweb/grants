@@ -24,9 +24,7 @@
                                     <label for="message" class="field-label field-label-line">Your Message</label>
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-4">
-                                        <button class="btn btn-lg btn-grad" type="submit">Submit</button>
-                                    </div>
+                                    <button class="btn btn-lg btn-grad btn-screen-small btn-contact-us" type="submit">Submit</button>
                                 </div>
                             </form>
 
