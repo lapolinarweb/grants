@@ -39,16 +39,16 @@ class Applicant extends Model
 
     public function statuses() {
         return $this->belongsToMany(Status::class)
-            ->withPivot(['approved_by'])
+            ->withPivot(['approved_by', 'comment'])
             ->withTimestamps();
     }
 
 
     public function originatesIn(Country $country) {
-        return $this->countries()->save($country);
+        return $this->countries()->attach($country);
     }
 
-    public function attachStatus(Status $status) {
-        return $this->statuses()->save($status);
+    public function attachStatus(Status $status, $id, $comment) {
+        return $this->statuses()->attach($status, [$id, $comment]);
     }
 }
