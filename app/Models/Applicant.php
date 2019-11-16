@@ -48,7 +48,7 @@ class Applicant extends Model
         return $this->countries()->attach($country);
     }
 
-    public function attachStatus(Status $status, $id, $comment) {
-        return $this->statuses()->attach($status, [$id, $comment]);
+    public function attachStatus(Status $status, User $user, $comment) {
+        return $this->statuses()->attach($status, [$user, $comment]);
     }
 }

@@ -10,6 +10,7 @@ use App\Models\Mobile;
 use App\Models\Passport;
 use App\Models\PublicKey;
 use App\Models\Status;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ApplicantController extends Controller
@@ -69,7 +70,8 @@ class ApplicantController extends Controller
 
             // create applicant-status
             $status = Status::findOrFail('reviewing');
-            $applicant->attachedStatus($status, $applicant->id, 'Created by System');
+            $approver = User::findOrFail(1);
+            $applicant->attachedStatus($status, $approver, 'Created by System');
             return response()->json(['status'=> true, 'message'=> 'Successfully sent your application'], 200);
 
         }catch (\Exception $e) {
