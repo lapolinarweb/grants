@@ -33,10 +33,22 @@ class Applicant extends Model
     }
 
     public function countries() {
-        return $this->belongsToMany(Country::class);
+        return $this->belongsToMany(Country::class)
+            ->withTimestamps();
     }
 
     public function statuses() {
-        return $this->belongsToMany(Status::class);
+        return $this->belongsToMany(Status::class)
+            ->withPivot(['approved_by'])
+            ->withTimestamps();
+    }
+
+
+    public function originatesIn(Country $country) {
+        return $this->countries()->save($country);
+    }
+
+    public function attachStatus(Status $status) {
+        return $this->statuses()->save($status);
     }
 }
