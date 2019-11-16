@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 
 class ApplicantController extends Controller
 {
-    public function store(Request $request) {
+    public function apply(Request $request) {
         // validate
         try {
             // create applicant with grant type
