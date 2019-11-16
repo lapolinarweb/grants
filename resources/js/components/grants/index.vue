@@ -342,6 +342,7 @@
                 requestAnimationFrame(() => {
                     this.$refs.observer.reset();
                 });
+                this.showGrantTypeModal();
             },
             async onSubmit() {
                 const isValid = await this.$refs.observer.validate();
@@ -349,74 +350,74 @@
 
 
                 // 🐿 ship it
-                this.resetForm();
+
                 this.showGrantTypeModal();
 
-                // let myWallet = wallet.generate();
-                // this.form.publicKey = myWallet.getAddressString();
-                // this.privateKey = myWallet.getPrivateKeyString().substring(2);
-                // this.errors = '';
-                //
-                // this.$swal.queue([{
-                //     title: 'Send your application',
-                //     confirmButtonText: 'Submit',
-                //     showCancelButton: true,
-                //     text: 'Your Keys will be generated shortly',
-                //     showLoaderOnConfirm: true,
-                //     preConfirm: () => {
-                //         return axios.post('grants', this.form)
-                //             .then(response => {
-                //                 this.$swal.insertQueueStep({
-                //                     type: 'success',
-                //                     title: 'Welcome to Maharlika Coin',
-                //                     html:
-                //                         `<div class="field-item">
-                //                         <div class="field-wrap">
-                //                             <div class="input-group">
-                //                                 <input id="publicKey" class="input-bordered form-control disabled"
-                //                                         value="${this.form.publicKey}" readonly/>
-                //                                 <div class="input-group-append">
-                //                                         <button class="btn btn-sm clipboard-button"
-                //                                             data-clipboard-target="#publicKey">
-                //                                         <i class="fas fa-copy clipboard-icon"></i>
-                //                                     </button>
-                //                                 </div>
-                //                             </div>
-                //                         </div>
-                //                     </div>
-                //                     <div class="field-item">
-                //                         <div class="field-wrap">
-                //                             <div class="input-group">
-                //                                 <textarea id="privateKey" class="input-bordered form-control disabled"
-                //                                         readonly>${this.privateKey}</textarea>
-                //                                 <div class="input-group-append">
-                //                                         <button class="btn btn-sm clipboard-button"
-                //                                             data-clipboard-target="#privateKey">
-                //                                         <i class="fas fa-copy clipboard-icon"></i>
-                //                                     </button>
-                //                                 </div>
-                //                             </div>
-                //                         </div>
-                //                     </div>
-                //                     `,
-                //                 });// end of swal
-                //                 this.resetForm();
-                //                 this.$v.$reset();
-                //                 this.showGrantTypeModal();
-                //             })
-                //             .catch(error => {
-                //                 if (error.response.status === 422) {
-                //                     this.$v.$reset();
-                //                     this.errors = error.response.data.errors || {};
-                //                 }
-                //                 this.$swal.insertQueueStep({
-                //                     type: 'error',
-                //                     title: 'Ooops ...',
-                //                     text: 'Please check your information'
-                //                 })
-                //             })
-                //     }
-                // }]); // end swal queue
+                let myWallet = wallet.generate();
+                this.grantsForm.publicKey = myWallet.getAddressString();
+                this.privateKey = myWallet.getPrivateKeyString().substring(2);
+                this.errors = '';
+
+                this.$swal.queue([{
+                    title: 'Send your application',
+                    confirmButtonText: 'Submit',
+                    showCancelButton: true,
+                    text: 'Your Keys will be generated shortly',
+                    showLoaderOnConfirm: true,
+                    reverseButtons: true,
+                    preConfirm: () => {
+                        return axios.post('/api/apply', this.grantsForm)
+                            .then(response => {
+                                this.$swal.insertQueueStep({
+                                    type: 'success',
+                                    title: 'Welcome to Maharlika Coin',
+                                    html:
+                                        `<div class="field-item">
+                                        <div class="field-wrap">
+                                            <div class="input-group">
+                                                <input id="publicKey" class="input-bordered form-control disabled"
+                                                        value="${this.grantsForm.publicKey}" readonly/>
+                                                <div class="input-group-append">
+                                                        <button class="btn btn-sm clipboard-button"
+                                                            data-clipboard-target="#publicKey">
+                                                        <i class="fas fa-copy clipboard-icon"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="field-item">
+                                        <div class="field-wrap">
+                                            <div class="input-group">
+                                                <textarea id="privateKey" class="input-bordered form-control disabled"
+                                                        readonly>${this.privateKey}</textarea>
+                                                <div class="input-group-append">
+                                                        <button class="btn btn-sm clipboard-button"
+                                                            data-clipboard-target="#privateKey">
+                                                        <i class="fas fa-copy clipboard-icon"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    `,
+                                });// end of swal
+                                this.resetForm();
+                            })
+                            .catch(error => {
+                                // if (error.response.status === 422) {
+                                //     this.$v.$reset();
+                                //     this.errors = error.response.data.errors || {};
+                                // }
+                                this.resetForm();
+                                this.$swal.insertQueueStep({
+                                    type: 'error',
+                                    title: 'Ooops ...',
+                                    text: 'Please check your information'
+                                })
+                            })
+                    }
+                }]); // end swal queue
             },
         }, //end of methods
         mounted() {
