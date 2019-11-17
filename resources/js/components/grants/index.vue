@@ -217,7 +217,7 @@
                         <label for="purpose" class="d-flex align-items-center">
                             <i class="fas fa-asterisk text-danger icon-xs mr-2"></i> Purpose of Grant
                         </label>
-                        <b-form-textarea id="purpose" trim v-model="grantsForm.purpose" row="4"
+                        <b-form-textarea id="purpose" trim v-model="grantsForm.purpose" rows="7"
                                          :state="errors.length ? false : (valid ? true : null)"></b-form-textarea>
                         <b-form-invalid-feedback id="purposeFeedback">{{ errors[0] }}</b-form-invalid-feedback>
                         <small class="form-text text-muted">Your purpose is very valuable to get approved on your application</small>
