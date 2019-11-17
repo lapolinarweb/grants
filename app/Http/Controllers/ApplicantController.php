@@ -7,6 +7,7 @@ use App\Models\Applicant;
 use App\Models\Country;
 use App\Models\Email;
 use App\Models\Mobile;
+use App\Models\Organization;
 use App\Models\Passport;
 use App\Models\PublicKey;
 use App\Models\Status;
@@ -67,6 +68,12 @@ class ApplicantController extends Controller
                 'applicant_id' => $applicant->id
             ]);
 
+            if($request->has('organization')) {
+                Organization::create([
+                    'name' => $request->organization,
+                    'applicant_id' => $applicant->id
+                ]);
+            }
             // create applicant-country
             $country = Country::firstOrCreate([
                 'name' => $request->countryName,
