@@ -386,7 +386,7 @@
             successModal() {
                 this.$swal.fire({
                     type: 'success',
-                    title: 'Congratulations, your application has been submitted successfully.',
+                    title: 'Your application has been submitted successfully',
                     html: this.successMessage(),
                     confirmButtonText: 'Apply for another Grant',
                     onClose: () => {
