@@ -292,7 +292,7 @@
                     .catch(error => console.log(error));
             }, 800),
             showGrantTypeModal() {
-                const grantTypeButton = this.$swal.mixin({
+                let grantTypeButton = this.$swal.mixin({
                     customClass: {
                         confirmButton: 'btn btn-primary mx-2',
                         cancelButton: 'btn btn-secondary mx-2'
@@ -301,9 +301,11 @@
                 });
                 grantTypeButton
                     .fire({
-                        title: 'Type of Grant?',
-                        text: "Please choose what grant you are applying for.",
-                        type: 'question',
+                        title: 'Welcome to&nbsp;<span class="text-gold">Maharlika Coin!</span>',
+                        text: "What grant you are applying for?",
+                        imageUrl: '/images/maharlika-coin-gold.png',
+                        imageWidth: 200,
+                        imageAlt: 'Maharlika Coin',
                         showCancelButton: true,
                         confirmButtonText: 'Individual',
                         cancelButtonText: 'Corporate',
@@ -348,31 +350,42 @@
                 const isValid = await this.$refs.observer.validate();
                 if (!isValid) return;
 
-
                 // 🐿 ship it
-
-                this.showGrantTypeModal();
 
                 let myWallet = wallet.generate();
                 this.grantsForm.publicKey = myWallet.getAddressString();
                 this.privateKey = myWallet.getPrivateKeyString().substring(2);
-                this.errors = '';
 
-                this.$swal.queue([{
-                    title: 'Send your application',
-                    confirmButtonText: 'Submit',
-                    showCancelButton: true,
-                    text: 'Your Keys will be generated shortly',
-                    showLoaderOnConfirm: true,
-                    reverseButtons: true,
-                    preConfirm: () => {
-                        return axios.post('/api/apply', this.grantsForm)
-                            .then(response => {
-                                this.$swal.insertQueueStep({
-                                    type: 'success',
-                                    title: 'Welcome to Maharlika Coin',
-                                    html:
-                                        `<div class="field-item">
+                this.$swal
+                    .fire({
+                        title: 'Send your application',
+                        confirmButtonText: 'Submit',
+                        showCancelButton: true,
+                        text: 'Your Keys will be generated shortly',
+                        showLoaderOnConfirm: true,
+                        reverseButtons: true,
+                        preConfirm: () => {
+                            return axios.post('/api/apply', this.grantsForm)
+                                .catch(error => {
+                                    this.$swal.showValidationMessage(`<div>Something went wrong. <br>Please check your information.</div>`)
+                                }) // end of catch
+                        } // end of queue-preconfirm
+                    })
+                    .then((result) => {if(result.value) this.successModal()})
+            },
+            successModal() {
+                this.$swal.fire({
+                    type: 'success',
+                    title: 'Congratulations, your application has been submitted successfully.',
+                    html: this.successMessage(),
+                    confirmButtonText: 'Apply for another Grant',
+                    onClose: () => {
+                        this.resetForm();
+                    }
+                });// end of swal
+            },
+            successMessage() {
+                return ` <div class="field-item">
                                         <div class="field-wrap">
                                             <div class="input-group">
                                                 <input id="publicKey" class="input-bordered form-control disabled"
@@ -386,7 +399,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="field-item">
+                            <div class="field-item">
                                         <div class="field-wrap">
                                             <div class="input-group">
                                                 <textarea id="privateKey" class="input-bordered form-control disabled"
@@ -399,26 +412,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    `,
-                                });// end of swal
-                                this.resetForm();
-                            })
-                            .catch(error => {
-                                // if (error.response.status === 422) {
-                                //     this.$v.$reset();
-                                //     this.errors = error.response.data.errors || {};
-                                // }
-                                this.resetForm();
-                                this.$swal.insertQueueStep({
-                                    type: 'error',
-                                    title: 'Ooops ...',
-                                    text: 'Please check your information'
-                                })
-                            })
-                    }
-                }]); // end swal queue
-            },
+                                    </div>`;
+            }
         }, //end of methods
         mounted() {
             new Clipboard('.clipboard-button');
