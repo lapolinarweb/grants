@@ -32,6 +32,10 @@ class Applicant extends Model
         return $this->hasMany(PublicKey::class);
     }
 
+    public function organization() {
+        return $this->hasOne(Organization::class);
+    }
+
     public function countries() {
         return $this->belongsToMany(Country::class)
             ->withTimestamps();
