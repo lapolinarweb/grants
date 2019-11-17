@@ -38,8 +38,8 @@ class Applicant extends Model
     }
 
     public function statuses() {
-        return $this->belongsToMany(Status::class)
-            ->withPivot(['approved_by', 'comment'])
+        return $this->belongsToMany(Status::class, 'applicant_status', 'applicant_id', 'status_id')
+            ->withPivot('approved_by', 'comment')
             ->withTimestamps();
     }
 
@@ -49,6 +49,6 @@ class Applicant extends Model
     }
 
     public function attachStatus(Status $status, User $user, $comment) {
-        return $this->statuses()->attach($status, [$user, $comment]);
+        return $this->statuses()->attach($status->id, ['approved_by' => $user->id, 'comment' =>$comment]);
     }
 }
