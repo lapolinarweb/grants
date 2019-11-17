@@ -291,7 +291,7 @@
                     })
                     .catch(error => console.log(error));
             }, 800),
-            showGrantTypeModal() {
+            showGrantTypeModal(isChanging = false) {
                 let grantTypeButton = this.$swal.mixin({
                     customClass: {
                         confirmButton: 'btn btn-primary mx-2',
@@ -299,11 +299,20 @@
                     },
                     buttonsStyling: false
                 });
+
+                let title = 'Welcome to&nbsp;<span class="text-gold">Maharlika Coin!</span>',
+                    imageUrl = '/images/maharlika-coin-gold.png';
+
+                if(isChanging) {
+                    title = 'Change Type of Application';
+                    imageUrl = '';
+                }
+
                 grantTypeButton
                     .fire({
-                        title: 'Welcome to&nbsp;<span class="text-gold">Maharlika Coin!</span>',
+                        title: title,
                         text: "What grant you are applying for?",
-                        imageUrl: '/images/maharlika-coin-gold.png',
+                        imageUrl: imageUrl,
                         imageWidth: 200,
                         imageAlt: 'Maharlika Coin',
                         showCancelButton: true,
@@ -344,7 +353,7 @@
                 requestAnimationFrame(() => {
                     this.$refs.observer.reset();
                 });
-                this.showGrantTypeModal();
+                this.showGrantTypeModal(true);
             },
             async onSubmit() {
                 const isValid = await this.$refs.observer.validate();
