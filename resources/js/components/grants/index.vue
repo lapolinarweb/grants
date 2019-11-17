@@ -179,18 +179,18 @@
                     </b-form-group>
                 </v-provider>
 
-                <!-- Organisation -->
-                <v-provider vid="organisation" name="Organisation" rules="required|min:5||alpha_spaces"
+                <!-- Organization -->
+                <v-provider vid="organization" name="Organization" rules="required|min:5||alpha_spaces"
                             v-slot="{ errors, valid }" class="col-md-4" v-if="isCorporate">
                     <b-form-group>
-                        <label for="organisation" class="d-flex align-items-center">
-                            <i class="fas fa-asterisk text-danger icon-xs mr-2"></i> Organisation
+                        <label for="organization" class="d-flex align-items-center">
+                            <i class="fas fa-asterisk text-danger icon-xs mr-2"></i> Organization
                         </label>
-                        <b-form-input id="organisation" v-model="grantsForm.organisation"
+                        <b-form-input id="organization" v-model="grantsForm.organization"
                                       placeholder="e.g. Formula Green Foundation"
                                       :state="errors.length ? false : (valid ? true : null)"></b-form-input>
-                        <b-form-invalid-feedback id="organisationFeedback">{{ errors[0] }}</b-form-invalid-feedback>
-                        <small class="form-text text-muted">We need to know your Organisation</small>
+                        <b-form-invalid-feedback id="organizationFeedback">{{ errors[0] }}</b-form-invalid-feedback>
+                        <small class="form-text text-muted">We need to know your Organization</small>
                     </b-form-group>
                 </v-provider>
 
@@ -333,7 +333,7 @@
                                 allowEnterKey: false,
                             });
                             this.grantsForm.type = 'individual';
-                            Vue.delete(this.grantsForm, 'organisation');
+                            Vue.delete(this.grantsForm, 'organization');
                         } else {
                             grantTypeButton.fire({
                                 title: 'Corporate',
@@ -344,7 +344,7 @@
                                 allowEnterKey: false,
                             });
                             this.grantsForm.type = 'corporate';
-                            Vue.set(this.grantsForm, 'organisation', '');
+                            Vue.set(this.grantsForm, 'organization', '');
                         }
                     }) // end then
             },

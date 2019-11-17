@@ -15,6 +15,7 @@ const FormFields = {
                 passport: '',
                 purpose: '',
                 publicKey: '',
+                organization: '',
                 countrySymbol: '',
                 countryCode: '',
                 countryFlag: '',
