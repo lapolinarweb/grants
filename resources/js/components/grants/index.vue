@@ -226,7 +226,7 @@
             <div class="row">
                 <!-- Apply Button -->
                 <div class="col-md-12 d-flex pt-4 justify-content-end">
-                    <button class="btn btn-primary btn-screen-small" type="submit" :disabled="invalid">Apply</button>
+                    <button class="btn btn-primary btn-screen-small" :disabled="invalid" type="submit" >Apply</button>
                 </div>
             </div>
         </div>
