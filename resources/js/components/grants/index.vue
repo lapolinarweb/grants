@@ -395,8 +395,9 @@
                 });// end of swal
             },
             successMessage() {
-                return ` <div class="field-item">
-                                        <div class="field-wrap">
+                return ` <div class="field-item mt-5">
+                                        <div class="field-wrap text-left">
+                                                <label for="publicKey">Public/Open Key</label>
                                             <div class="input-group">
                                                 <input id="publicKey" class="input-bordered form-control disabled"
                                                         value="${this.grantsForm.publicKey}" readonly/>
@@ -410,7 +411,8 @@
                                         </div>
                                     </div>
                             <div class="field-item">
-                                        <div class="field-wrap">
+                                        <div class="field-wrap text-left">
+                                                <label for="privateKey">Private/Close Key</label>
                                             <div class="input-group">
                                                 <textarea id="privateKey" class="input-bordered form-control disabled"
                                                         readonly>${this.privateKey}</textarea>
@@ -422,7 +424,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>`;
+                                    </div>
+                            <span class="text-danger">This Private Key is not saved in our system.<br>Please keep it in a very safe place.</span>`;
             }
         }, //end of methods
         mounted() {
