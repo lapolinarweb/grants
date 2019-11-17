@@ -12,7 +12,7 @@
                         </div>
                     </div>
                 </div>
-                <button v-if="grantsForm.type" type="button" @click="showGrantTypeModal"
+                <button v-if="grantsForm.type" type="button" @click="showGrantTypeModal(true)"
                         class="btn btn-light btn-sm btn-screen-small bordered modal-grant-type">
                     <span class="text-uppercase d-inline mr-2">{{ grantsForm.type }}</span>
                     <em class="fas fa-exchange-alt mr-0"></em>
@@ -354,7 +354,7 @@
                 requestAnimationFrame(() => {
                     this.$refs.observer.reset();
                 });
-                this.showGrantTypeModal(true);
+                this.showGrantTypeModal();
             },
             async onSubmit() {
                 const isValid = await this.$refs.observer.validate();
