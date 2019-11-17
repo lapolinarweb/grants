@@ -180,7 +180,8 @@
                 </v-provider>
 
                 <!-- Organization -->
-                <v-provider vid="organization" name="Organization" rules="required|min:5||alpha_spaces"
+                <v-provider vid="organization" name="Organization"
+                            rules="required|min:5||alpha_spaces|unique:organizations,name"
                             v-slot="{ errors, valid }" class="col-md-4" v-if="isCorporate">
                     <b-form-group>
                         <label for="organization" class="d-flex align-items-center">
