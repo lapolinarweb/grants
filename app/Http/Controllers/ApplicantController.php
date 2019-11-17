@@ -14,6 +14,7 @@ use App\Models\Type;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ApplicantController extends Controller
 {
@@ -92,5 +93,24 @@ class ApplicantController extends Controller
 
 
 
+    }
+
+    public function validateField(Request $request, $rule) {
+        $table = $request->table;
+        $column = $request->column;
+        $value = $request->value;
+
+        $data = ["$column" => "$value"];
+        $rules = ["$column" => "$rule:$table"];
+        $messages = ["$column.$rule" => "$value already exists"];
+        $validator = Validator::make($data, $rules, $messages);;
+
+        if($validator->fails())
+            return response()->json([
+                "valid" => false,
+                "message"=>$validator->messages()->first()
+            ],200);
+
+        return response()->json(["valid" =>true], 200);
     }
 }

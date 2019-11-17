@@ -146,8 +146,8 @@
                 </div>
 
                 <!-- Mobile -->
-                <v-provider vid="mobile" name="Mobile" :rules='{required: true, mobile: grantsForm.countryCode }'
-                            v-slot="{ errors, valid }" class="col-md-7">
+                <v-provider vid="mobile" name="Mobile" v-slot="{ errors, valid }" class="col-md-7"
+                            :rules='{required: true, mobile: grantsForm.countryCode, unique: "mobiles,number" }'>
                     <b-form-group>
                         <label for="mobile" class="d-flex align-items-center">
                             <i class="fas fa-asterisk text-danger icon-xs mr-2"></i> Mobile
@@ -167,7 +167,7 @@
             </div>
             <div class="row">
                 <!-- Email -->
-                <v-provider vid="email" name="Email" rules="required|email" v-slot="{ errors, valid }" class="col-md-5">
+                <v-provider vid="email" name="Email" rules="required|email|unique:emails,address" v-slot="{ errors, valid }" class="col-md-5">
                     <b-form-group>
                         <label for="email" class="d-flex align-items-center">
                             <i class="fas fa-asterisk text-danger icon-xs mr-2"></i> Email
@@ -195,7 +195,7 @@
                 </v-provider>
 
                 <!-- passport -->
-                <v-provider vid="passport" name="Passport" rules="required|lengthBetween:6,9|alpha_num"
+                <v-provider vid="passport" name="Passport" rules="required|lengthBetween:6,9|alpha_num|unique:passports,code"
                             v-slot="{ errors, valid }" :class="[isCorporate ? 'col-md-3': 'col-md-7']">
                     <b-form-group>
                         <label for="passport" class="d-flex align-items-center">

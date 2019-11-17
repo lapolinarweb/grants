@@ -2,8 +2,27 @@ import {  required, min, max, email, alpha, alpha_num, alpha_spaces } from 'vee-
 import { extend } from 'vee-validate'
 import PhoneNumber from 'awesome-phonenumber'
 
+extend('unique', {
+    validate: (value, {table, column}) => {
+        return new Promise((resolve, reject) => {
+            axios.post('/api/validate/unique', {value: value, column: column, table: table})
+                .then(response => {
+                    let data = response.data;
+                    return data.valid
+                        ? resolve({valid: data.valid})
+                        : resolve({valid: data.valid, data: {message: data.message}});
+                })
+        })
+    },
+    params: ['table', 'column'],
+    message: (field, params) => {
+        let message = `this ${field} already exists`;
+        return message.toLowerCase();
+    }
+});
+
 extend('mobile', {
-    validate: function mobile(value, {countryCode}) {
+    validate: (value, {countryCode}) => {
         value = `+${countryCode} ${value}`;
         let phone = new PhoneNumber(value);
         return phone.isMobile()
@@ -27,7 +46,7 @@ extend("required", {
 
 extend("email", {
     ...email,
-    message: '{_value_} is an invalid email'
+    message: '{_value_} is an format of email'
 });
 
 extend("min", {
@@ -61,4 +80,4 @@ extend('alphanumeric_spaces', {
         return value.match(pattern);
     },
     message: 'Only alphabets, numbers and spaces are allowed'
-})
+});
