@@ -395,41 +395,41 @@
                 });// end of swal
             },
             successMessage() {
-                return ` <div class="field-item mt-5">
-                                        <div class="field-wrap text-left">
-                                                <label for="publicKey">Public/Open Key</label>
-                                            <div class="input-group">
-                                                <input id="publicKey" class="input-bordered form-control disabled"
-                                                        value="${this.grantsForm.publicKey}" readonly/>
-                                                <div class="input-group-append">
-                                                        <button class="btn btn-sm clipboard-button"
-                                                            data-clipboard-target="#publicKey">
-                                                        <i class="fas fa-copy clipboard-icon"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
+                return `<div class="field-item mt-5">
+                            <div class="field-wrap text-left">
+                                <label for="publicKey">Public/Open Key</label>
+                                <div class="input-group">
+                                    <input id="publicKey" class="input-bordered form-control disabled"
+                                        value="${this.grantsForm.publicKey}" readonly/>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-sm clipboard-button"
+                                            data-clipboard-target="#publicKey">
+                                            <i class="fas fa-copy clipboard-icon"></i>
+                                        </button>
                                     </div>
-                            <div class="field-item">
-                                        <div class="field-wrap text-left">
-                                                <label for="privateKey">Private/Close Key</label>
-                                            <div class="input-group">
-                                                <textarea id="privateKey" class="input-bordered form-control disabled"
-                                                        readonly>${this.privateKey}</textarea>
-                                                <div class="input-group-append">
-                                                        <button class="btn btn-sm clipboard-button"
-                                                            data-clipboard-target="#privateKey">
-                                                        <i class="fas fa-copy clipboard-icon"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field-item">
+                            <div class="field-wrap text-left">
+                                <label for="privateKey">Private/Close Key</label>
+                                <div class="input-group">
+                                    <textarea id="privateKey" class="input-bordered form-control disabled"
+                                        readonly>${this.privateKey}</textarea>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-sm clipboard-button"
+                                            data-clipboard-target="#privateKey">
+                                            <i class="fas fa-copy clipboard-icon"></i>
+                                        </button>
                                     </div>
-                            <div>
-                                <span class="text-danger">For High Security Purposes, </span><br>
-                                <span>your Private Key never reaches our servers.</span><br>
-                                <span>Please keep it with the utmost importance.</span><br>
-                            </div>`;
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-danger">For High Security Purposes,</span><br>
+                            <span>your Private Key never reaches our servers.</span><br>
+                            <span>Please keep it with the utmost importance.</span><br>
+                        </div>`;
             }
         }, //end of methods
         mounted() {
