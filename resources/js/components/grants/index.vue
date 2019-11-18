@@ -425,7 +425,11 @@
                                             </div>
                                         </div>
                                     </div>
-                            <span class="text-danger">This Private Key is not saved in our system.<br>Please keep it in a very safe place.</span>`;
+                            <div>
+                                <span class="text-danger">For High Security Purposes, </span>
+                                <span>your Private Key never reaches our servers.</span>
+                                <span>Please keep it with the utmost importance.</span>
+                            </div>`;
             }
         }, //end of methods
         mounted() {
