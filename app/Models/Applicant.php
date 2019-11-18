@@ -12,6 +12,10 @@ class Applicant extends Model
         return $this->belongsTo(Type::class);
     }
 
+    public function organization() {
+        return $this->hasOne(Organization::class);
+    }
+
     public function addresses() {
         return $this->hasMany(Address::class);
     }
@@ -32,8 +36,8 @@ class Applicant extends Model
         return $this->hasMany(PublicKey::class);
     }
 
-    public function organization() {
-        return $this->hasOne(Organization::class);
+    public function purposes() {
+        return $this->hasMany(Purpose::class);
     }
 
     public function countries() {
