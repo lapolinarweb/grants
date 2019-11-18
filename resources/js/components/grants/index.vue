@@ -426,9 +426,9 @@
                                         </div>
                                     </div>
                             <div>
-                                <span class="text-danger">For High Security Purposes, </span>
-                                <span>your Private Key never reaches our servers.</span>
-                                <span>Please keep it with the utmost importance.</span>
+                                <span class="text-danger">For High Security Purposes, </span><br>
+                                <span>your Private Key never reaches our servers.</span><br>
+                                <span>Please keep it with the utmost importance.</span><br>
                             </div>`;
             }
         }, //end of methods
