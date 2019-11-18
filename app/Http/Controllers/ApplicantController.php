@@ -10,6 +10,7 @@ use App\Models\Mobile;
 use App\Models\Organization;
 use App\Models\Passport;
 use App\Models\PublicKey;
+use App\Models\Purpose;
 use App\Models\Status;
 use App\Models\Type;
 use App\Models\User;
@@ -68,12 +69,20 @@ class ApplicantController extends Controller
                 'applicant_id' => $applicant->id
             ]);
 
+            // create organization
             if($request->has('organization')) {
                 Organization::create([
                     'name' => $request->organization,
                     'applicant_id' => $applicant->id
                 ]);
             }
+
+            // create purpose
+            Purpose::create([
+                'description' => $request->purpose,
+                'applicant_id' => $applicant->id
+            ]);
+
             // create applicant-country
             $country = Country::firstOrCreate([
                 'name' => $request->countryName,
