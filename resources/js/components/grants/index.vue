@@ -374,6 +374,7 @@
                         text: 'Your Keys will be generated shortly',
                         showLoaderOnConfirm: true,
                         reverseButtons: true,
+                        allowOutsideClick: false,
                         preConfirm: () => {
                             return axios.post('/api/apply', this.grantsForm)
                                 .catch(error => {
@@ -389,6 +390,7 @@
                     title: 'Your application has been submitted successfully',
                     html: this.successMessage(),
                     confirmButtonText: 'Apply for another Grant',
+                    allowOutsideClick: false,
                     onClose: () => {
                         this.resetForm();
                     }
