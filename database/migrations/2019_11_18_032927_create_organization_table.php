@@ -17,6 +17,7 @@ class CreateOrganizationTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->string('description')->nullable();
+            $table->boolean('confirmed')->default(0);
 
             $table->unsignedBigInteger('applicant_id');
             $table->foreign('applicant_id')
