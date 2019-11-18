@@ -133,7 +133,7 @@
                             <div class="wgs-body">
                                 <ul class="wgs-links">
                                     <li><a href="https://www.maharlikacoin.com/terms">Terms & Conditions</a></li>
-                                    <li><a href="https://www.maharlikacoin.com/privacy">Privacy</a></li>
+                                    <li><a href="https://www.maharlikacoin.com/privacy-policy">Privacy</a></li>
                                     <li><a href="https://www.maharlikacoin.com/whitepaper" target="_blank">Whitepaper</a></li>
                                 </ul>
                             </div>
