@@ -42,7 +42,6 @@
                         <b-form-input id="firstname" trim v-model="grantsForm.firstname" placeholder="e.g. Mason James"
                                       :state="errors.length ? false : (valid ? true : null)"></b-form-input>
                         <b-form-invalid-feedback id="firstnameFeedback">{{ errors[0] }}</b-form-invalid-feedback>
-                        <small class="form-text text-muted">Your first name is really important to us</small>
                     </b-form-group>
                 </v-provider>
 
@@ -56,7 +55,6 @@
                         <b-form-input id="lastname" trim v-model="grantsForm.lastname" placeholder="e.g. Murray"
                                       :state="errors.length ? false : (valid ? true : null)"></b-form-input>
                         <b-form-invalid-feedback id="lastnameFeedback">{{ errors[0] }}</b-form-invalid-feedback>
-                        <small class="form-text text-muted">Your last name is as important with the others</small>
                     </b-form-group>
                 </v-provider>
             </div>
@@ -72,7 +70,6 @@
                         <b-form-input id="address" v-model="grantsForm.address" placeholder="e.g. 123D Craig Street Fusion Road"
                                       :state="errors.length ? false : (valid ? true : null)"></b-form-input>
                         <b-form-invalid-feedback id="addressFeedback">{{ errors[0] }}</b-form-invalid-feedback>
-                        <small class="form-text text-muted">Your Address is always safe with us</small>
                     </b-form-group>
                 </v-provider>
             </div>
@@ -141,7 +138,6 @@
                             </template>
                             <span slot="noResult">Oops! No elements found. Consider changing the search query.</span>
                         </multiselect>
-                        <small class="form-text text-muted">Let us know your origination</small>
                     </b-form-group>
                 </div>
 
@@ -161,7 +157,6 @@
                             </b-form-input>
                             <b-form-invalid-feedback id="mobileFeedback" v-if="errors.length">{{ errors[0] }}</b-form-invalid-feedback>
                         </b-input-group>
-                        <small class="form-text text-muted">We need your Mobile to be able to contact you.</small>
                     </b-form-group>
                 </v-provider>
             </div>
@@ -175,7 +170,6 @@
                         <b-form-input id="email" trim v-model="grantsForm.email" placeholder="e.g. murraymj@domain.com"
                                       :state="errors.length ? false : (valid ? true : null)"></b-form-input>
                         <b-form-invalid-feedback id="emailFeedback">{{ errors[0] }}</b-form-invalid-feedback>
-                        <small class="form-text text-muted">We will never share your email with anyone else</small>
                     </b-form-group>
                 </v-provider>
 
@@ -191,7 +185,6 @@
                                       placeholder="e.g. Formula Green Foundation"
                                       :state="errors.length ? false : (valid ? true : null)"></b-form-input>
                         <b-form-invalid-feedback id="organizationFeedback">{{ errors[0] }}</b-form-invalid-feedback>
-                        <small class="form-text text-muted">We need to know your Organization</small>
                     </b-form-group>
                 </v-provider>
 
@@ -205,7 +198,6 @@
                         <b-form-input id="passport" trim v-model="grantsForm.passport" placeholder="e.g. ALPHANUMX"
                                       :state="errors.length ? false : (valid ? true : null)"></b-form-input>
                         <b-form-invalid-feedback id="passportFeedback">{{ errors[0] }}</b-form-invalid-feedback>
-                        <small class="form-text text-muted">Your real identity is very important us</small>
                     </b-form-group>
                 </v-provider>
             </div>
@@ -220,14 +212,13 @@
                         <b-form-textarea id="purpose" trim v-model="grantsForm.purpose" rows="7"
                                          :state="errors.length ? false : (valid ? true : null)"></b-form-textarea>
                         <b-form-invalid-feedback id="purposeFeedback">{{ errors[0] }}</b-form-invalid-feedback>
-                        <small class="form-text text-muted">Your purpose is very valuable to get approved on your application</small>
                     </b-form-group>
                 </v-provider>
             </div>
             <div class="row">
                 <!-- Apply Button -->
                 <div class="col-md-12 d-flex pt-4 justify-content-end">
-                    <button class="btn btn-primary btn-screen-small" :disabled="invalid" type="submit" >Apply</button>
+                    <button class="btn btn-grad btn-md text-white btn-screen-small" :disabled="invalid" type="submit" >Apply</button>
                 </div>
             </div>
         </div>
@@ -295,13 +286,13 @@
             showGrantTypeModal(isChanging = false) {
                 let grantTypeButton = this.$swal.mixin({
                     customClass: {
-                        confirmButton: 'btn btn-primary mx-2',
+                        confirmButton: 'btn btn-grad btn-md text-white mx-2',
                         cancelButton: 'btn btn-secondary mx-2'
                     },
                     buttonsStyling: false
                 });
 
-                let title = 'Welcome to&nbsp;<span class="text-gold">Maharlika Coin!</span>',
+                let title = 'Welcome to&nbsp;<span class="text-gold">MHLK Grants!</span>',
                     imageUrl = '/images/maharlika-coin-gold.png';
 
                 if(isChanging) {
@@ -366,7 +357,14 @@
                 this.grantsForm.publicKey = myWallet.getAddressString();
                 this.privateKey = myWallet.getPrivateKeyString().substring(2);
 
-                this.$swal
+                let submitButton = this.$swal.mixin({
+                    customClass: {
+                        confirmButton: 'btn btn-md btn-grad text-white ml-2',
+                        cancelButton: 'btn btn-secondary mx-2'
+                    },
+                    buttonsStyling: false
+                });
+                submitButton
                     .fire({
                         title: 'Send your application',
                         confirmButtonText: 'Submit',
@@ -385,7 +383,13 @@
                     .then((result) => {if(result.value) this.successModal()})
             },
             successModal() {
-                this.$swal.fire({
+                let successButton = this.$swal.mixin({
+                    customClass: {
+                        confirmButton: 'btn btn-md btn-grad text-white ml-2',
+                    },
+                    buttonsStyling: false
+                });
+                successButton.fire({
                     type: 'success',
                     title: 'Your application has been submitted successfully',
                     html: this.successMessage(),
@@ -427,8 +431,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <span class="text-danger">For High Security Purposes,</span><br>
+                        <div class="text-black-50">
+                            <span class="text-success">For High Security Purposes,</span><br>
                             <span>your Private Key never reaches our servers.</span><br>
                             <span>Please keep it with the utmost importance.</span><br>
                         </div>`;
