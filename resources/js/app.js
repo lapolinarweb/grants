@@ -1,4 +1,5 @@
 import GrantsIndex from './components/grants/index';
+import FooterComponent from './components/FooterComponent';
 import VueGtm from 'vue-gtm';
 import './vendors/vue-sweetalert2'
 import './vendors/vee-validate'
@@ -12,6 +13,7 @@ Vue.use(VueGtm, {
 new Vue({
     el: '#app',
     components: {
-        GrantsIndex
+        GrantsIndex,
+        FooterComponent
     },
 });
