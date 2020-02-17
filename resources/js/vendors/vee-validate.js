@@ -46,7 +46,7 @@ extend("required", {
 
 extend("email", {
     ...email,
-    message: '{_value_} is an format of email'
+    message: '{_value_} is an invalid format of email'
 });
 
 extend("min", {
