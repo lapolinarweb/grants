@@ -203,7 +203,7 @@
             </div>
             <div class="row">
                 <!-- Purpose -->
-                <v-provider vid="purpose" name="Purpose" rules="required|lengthBetween:30,255" v-slot="{ errors, invalid, valid }"
+                <v-provider vid="purpose" name="Purpose" rules="required|lengthBetween:30,1000" v-slot="{ errors, invalid, valid }"
                     class="col-md-12">
                     <b-form-group>
                         <label for="purpose" class="d-flex align-items-center">
